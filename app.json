@@ -1,6 +1,11 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/note/note",
+    "pages/index/index",
+    "pages/login/login",
+    "pages/tj/tj",
+    "pages/user/user"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -9,5 +14,30 @@
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#3768ab",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "images/detail_select.png",
+        "iconPath": "images/detail.png",
+        "pagePath": "pages/index/index",
+        "text": "明细"
+      },
+      {
+        "selectedIconPath": "images/tj_select.png",
+        "iconPath": "images/tj.png",
+        "pagePath": "pages/tj/tj",
+        "text": "报表"
+      },
+      {
+        "selectedIconPath": "images/user_select.png",
+        "iconPath": "images/user.png",
+        "pagePath": "pages/user/user",
+        "text": "我的"
+      }
+    ]
+  }
 }

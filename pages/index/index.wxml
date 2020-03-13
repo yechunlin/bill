@@ -1,13 +1,22 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class="select">
+  <view class="dated">
+    {{ dated.year }}年{{ dated.month }}月 
+    <picker mode="date" fields="month" start="2020-01" end="" bindchange="bindDateChange">
+      <image src="/images/down.png"></image>
+    </picker>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="all">
+    支出￥28.40 收入￥5.00   
+    <view class="jyb" bindtap="writeNum">记一笔</view>
+  </view>
+</view>
+<view class="list">
+  <view class="list-item-pic"><image src="/images/1.png"></image></view>
+  <view class="list-item">
+    <view class="list-item-belong">
+      早餐
+      <view class="list-item-num">-4.5</view> 
+    </view>
+    <view class="list-item-dated">3月13日 08:43</view>
   </view>
 </view>

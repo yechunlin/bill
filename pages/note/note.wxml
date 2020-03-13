@@ -1,0 +1,37 @@
+<view class="container">
+  <form bindsubmit="formSubmit">
+    <view class="bg-fff p-lr30 border-t">
+      <view class="ipt-wrap border-b flex ai-center">
+        <label for="" class="font14">数目</label>
+        <input type="text" name="num" class="ml40 flex1" placeholder="请输入金额"></input>
+      </view>
+
+      <view class="ipt-wrap border-b flex ai-center">
+        <label for="" class="font14">类型</label>
+        <radio-group class="radio-group" bindchange="bindRadioChange">
+                  <radio class="radio" value="1">收入</radio>
+                  <radio class="radio" value="0" style="margin-left:10px">支出</radio>
+        </radio-group>
+      </view>
+  
+      <view class="ipt-wrap border-b flex ai-center">
+        <label for="" class="font14">来源</label>
+        <picker  value="{{ v }}" range="{{belong}}" bindchange="bindBelongChange">
+          <view class="picker">
+            {{belong[belong_id]}}
+          </view>
+        </picker>
+      </view>
+
+      <view class="ipt-wrap border-b flex ai-center">
+        <label for="" class="font14">日期</label>
+        <picker mode="date" start="2020-01-01" end="" bindchange="bindDateChange">
+          {{ dated.year }}年{{ dated.month }}月{{ dated.day }}日
+        </picker>
+      </view>
+    </view>
+    <!-- <view class="bt_box"> -->
+      <button form-type="submit" type="primary" size="default" class="sb" style="width:100%"> 保存 </button>
+    <!-- </view> -->
+  </form>
+</view>
