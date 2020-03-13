@@ -1,12 +1,14 @@
 // pages/note/note.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    dated: { 'year': 2020, 'month': 3, 'day': 1},
-    belong: ['饮食', '出行', '住房', '服饰','娱乐','生活用品','话费','工资','转账','理财','红包','乞讨','捡钱','抢','偷'],
+    type:1,
+    dated: { 'year': 2020, 'month': 3, 'day': 1, 'str':'2020-03-01'},
+    belong: ['饮食', '出行', '住房', '服饰','娱乐','生活用品','通信','工资','转账','理财','红包','乞讨','捡钱','抢','偷'],
     belong_id: 0
   },
 
@@ -14,7 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -66,10 +68,11 @@ Page({
 
   },
   bindRadioChange: function (e) {
-    console.log(e)
+    this.setData({
+      type: Number(e.detail.value)
+    })
   },
   bindBelongChange:function(e){
-    console.log(e)
     this.setData({
       belong_id: Number(e.detail.value)
     })
@@ -78,12 +81,31 @@ Page({
   bindDateChange: function (e) {
     var dateArr = e.detail.value.split('-');
     this.setData({
-      dated: { 'year': Number(dateArr[0]), 'month': Number(dateArr[1]), 'day': Number(dateArr[2])}
+      dated: { 'year': Number(dateArr[0]), 'month': Number(dateArr[1]), 'day': Number(dateArr[2]), 'str': e.detail.value}
     })
   },
   formSubmit: function (e) {
-    console.log(e)
-    var that = this
     var formData = e.detail.value;
+    formData.user_id = Number(app.globalData.userInfo.id);
+    formData.type = this.data.type;
+    formData.belong = this.data.belong_id;
+    formData.dated = this.data.dated.str;
+    console.log(formData)
+    wx.request({
+      url: 'https://yechunlin.com/wx/setDetail.php',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method: 'POST',
+      data: formData,
+      success: data => {
+        console.log(data)
+        if (data.data.code) {
+          wx.switchTab({
+            url: '../index/index'
+          })
+        }
+      }
+    })
   }
 })

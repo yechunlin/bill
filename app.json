@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/note/note",
     "pages/index/index",
     "pages/login/login",
     "pages/tj/tj",
+    "pages/note/note",
     "pages/user/user"
     
   ],

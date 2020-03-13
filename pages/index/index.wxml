@@ -6,17 +6,17 @@
     </picker>
   </view>
   <view class="all">
-    支出￥28.40 收入￥5.00   
+    支出￥{{ list.zhi }}     收入￥{{ list.ru }}   
     <view class="jyb" bindtap="writeNum">记一笔</view>
   </view>
 </view>
-<view class="list">
+<view class="list" wx:for="{{ list.data }}">
   <view class="list-item-pic"><image src="/images/1.png"></image></view>
   <view class="list-item">
     <view class="list-item-belong">
-      早餐
-      <view class="list-item-num">-4.5</view> 
+      {{ item.belong_str }}
+      <view class="list-item-num-{{ item.type }}">{{ item.type==1?'+':'-' }}{{ item.num }}</view> 
     </view>
-    <view class="list-item-dated">3月13日 08:43</view>
+    <view class="list-item-dated">{{ item.dated_str }}</view>
   </view>
 </view>

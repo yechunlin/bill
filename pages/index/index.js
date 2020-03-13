@@ -4,10 +4,12 @@ const app = getApp()
 
 Page({
   data: {
-    dated: {'year':2020,'month':3}
+    dated: {'year':2020,'month':3,'str':'2020-03'},
+    list:{}
   },
 
   onLoad: function () {
+    var that = this;
     if (app.globalData.userInfo == null){
       wx.login({
         success: res => {
@@ -32,6 +34,24 @@ Page({
         }
       })
     }
+  },
+  onShow: function(){
+    var that = this;
+    wx.request({
+      url: 'https://yechunlin.com/wx/getList.php',
+      data: {
+        user_id: app.globalData.userInfo.id,
+        dated: that.data.dated.str
+      },
+      success: data => {
+        console.log(data)
+        if (data.data.code) {
+          that.setData({
+            list: data.data
+          })
+        }
+      }
+    })
   },
   //记账
   writeNum:function(){

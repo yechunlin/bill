@@ -48,4 +48,5 @@
   bottom: 0;
   line-height: 40px;
   background: linear-gradient(to right, #66ded0, #229dfe);
+  letter-spacing:5px
 }
