@@ -1,0 +1,9 @@
+var Fix = {
+  toFix: function (value,num) {
+    console.log(value)
+    return value.toFixed(num)//此处num为保留一位小数
+  }
+}
+module.exports = {
+  toFix: Fix.toFix
+}

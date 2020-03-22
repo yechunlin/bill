@@ -1,2 +1,28 @@
 <!--pages/tj/tj.wxml-->
-<text>pages/tj/tj.wxml</text>
+<wxs module="Fix" src="../../utils/util.wxs"></wxs>
+<view class="select-box">
+  显示类型：
+  <radio-group class="radio-group" bindchange="bindRadioChange">
+      <radio class="radio" value="0" checked="true">支出</radio>
+      <radio class="radio" value="1" style="margin-left:10px" >收入</radio>
+  </radio-group>
+</view>
+<view class="pie-wrap" wx:if="{{ showDetail }}">
+    <canvas canvas-id="pieCanvas" class="canvas" style="height:300px;width:100%" bindtouchstart="touchHandler"></canvas>
+</view>
+<view class="table-list" >
+  <view class="ti-dated">
+    <picker mode="date" fields="month" start="2020-01" end="" bindchange="bindDateChange">
+      报表详情({{ dated.year }}年{{ dated.month }}月)
+    </picker>
+  </view>
+  <view class="ti-list" wx:if="{{ showDetail }}">
+    <view class="content">
+      <view class="ti-list-item" wx:for="{{ series }}">
+        <view class="ti-list-item-type">{{ item.name }}</view>
+        <view class="ti-list-item-num">{{ Fix.toFix(item.data,2) }}￥</view>
+        <view class="ti-list-item-point">{{ item.point }}%</view>
+      </view>
+    </view>
+  </view>
+</view>

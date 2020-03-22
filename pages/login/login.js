@@ -69,7 +69,7 @@ Page({
   getUserInfo: function (e) {
     console.log(e)
     wx.request({
-      url: 'https://yechunlin.com/wx/register.php',
+      url: 'https://yechunlin.com/wx/bill/register.php',
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
@@ -85,7 +85,12 @@ Page({
           app.globalData.userInfo = data.data.data;
           wx.setStorageSync('userInfo', JSON.stringify(data.data.data));
           wx.switchTab({
-            url: '../index/index'
+            url: '../index/index',
+            success: function (e) {
+              var page = getCurrentPages().pop();
+              if (page == undefined || page == null) return;
+              page.onLoad();
+            }
           })
         }
       }

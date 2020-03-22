@@ -1,1 +1,72 @@
 /* pages/tj/tj.wxss */
+page{
+  background:rgb(247, 247, 247);
+  color:rgb(80, 80, 80);
+}
+view{
+  font-family: PingFangSC-Light;
+}
+.select-box{
+  height:50px;
+  width:100%;
+  display: flex;
+  padding-left: 3%;
+  padding-top: 3%;
+}
+.pie-wrap{
+  width:100%;
+}
+.table-list{
+  width:100%;
+}
+.ti-dated{
+  width:100%;
+  padding-left: 3%;
+  height:40px;
+  line-height:40px;
+}
+.ti-list{
+  width:94%;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 1px 0 2px dddddd;
+}
+.ti-list:before,
+.ti-list:after {
+content: "";
+  position: absolute;
+  -webkit-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+  bottom: 15px;
+  box-shadow: 0 15px 5px rgba(0, 0, 0, 0.3);
+  height: 20px;
+  max-width: 300px;
+  width: 40%;
+}
+.ti-list:after {
+  -webkit-transform: rotate(3deg);
+  transform: rotate(3deg);
+  left: auto;
+  right: 0;
+}
+.ti-list .content {
+  position: relative;
+  z-index: 2;
+  border-radius: 5px;
+  overflow: hidden
+}
+.ti-list-item{
+  width:100%;
+  height:40px;
+  line-height:40px;
+  background: #fff;
+  display: flex;
+  border-bottom: 1px solid rgb(250, 250, 250)
+}
+.ti-list-item view{
+  text-align: center;
+  width:33%;
+}
+.ti-list-item-type{
+  
+}

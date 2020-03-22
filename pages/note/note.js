@@ -8,7 +8,7 @@ Page({
   data: {
     type:1,
     dated: { 'year': 2020, 'month': 3, 'day': 1, 'str':'2020-03-01'},
-    belong: ['饮食', '出行', '住房', '服饰','娱乐','生活用品','通信','工资','转账','理财','红包','乞讨','捡钱','抢','偷'],
+    belong: ['饮食', '出行', '住房', '服饰', '娱乐', '生活用品', '通信', '工资', '转账', '理财', '红包', '医疗', '慈善', '捡钱'],
     belong_id: 0
   },
 
@@ -90,19 +90,22 @@ Page({
     formData.type = this.data.type;
     formData.belong = this.data.belong_id;
     formData.dated = this.data.dated.str;
-    console.log(formData)
     wx.request({
-      url: 'https://yechunlin.com/wx/setDetail.php',
+      url: 'https://yechunlin.com/wx/bill/setDetail.php',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
       method: 'POST',
       data: formData,
       success: data => {
-        console.log(data)
         if (data.data.code) {
           wx.switchTab({
-            url: '../index/index'
+            url: '../index/index',
+            success: function (e) {
+              var page = getCurrentPages().pop();
+              if (page == undefined || page == null) return;
+              page.onLoad();
+            }
           })
         }
       }
