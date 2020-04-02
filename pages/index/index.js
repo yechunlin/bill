@@ -62,6 +62,12 @@ Page({
     })
     this.getlist();
   },
+  upDetail:function(e){
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../note/note?detailId='+id
+    })
+  },
   getlist:function(){
     var that = this;
     wx.request({
@@ -71,6 +77,7 @@ Page({
         dated: that.data.dated.str
       },
       success: data => {
+        console.log(data)
         if (data.data.code) {
           data.data.ru = data.data.ru.toFixed(2);
           data.data.zhi = data.data.zhi.toFixed(2);

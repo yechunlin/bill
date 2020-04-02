@@ -10,7 +10,7 @@
     <view class="jyb" bindtap="writeNum">记一笔</view>
   </view>
 </view>
-<view class="list" wx:for="{{ list.data }}">
+<view class="list" wx:for="{{ list.data }}" data-id="{{ item.id }}" bindtap="upDetail">
   <view class="list-item-pic"><image src="/images/belong/{{ item.belong }}.png"></image></view>
   <view class="list-item">
     <view class="list-item-belong">

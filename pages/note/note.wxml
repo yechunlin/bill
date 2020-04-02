@@ -3,14 +3,14 @@
     <view class="bg-fff p-lr30 border-t">
       <view class="ipt-wrap border-b flex ai-center">
         <label for="" class="font14">数目</label>
-        <input type="text" name="num" class="ml40 flex1" placeholder="请输入金额"></input>
+        <input type="text" name="num" value="{{ num }}" class="ml40 flex1" placeholder="请输入金额"></input>
       </view>
 
       <view class="ipt-wrap border-b flex ai-center">
         <label for="" class="font14">类型</label>
         <radio-group class="radio-group" bindchange="bindRadioChange">
-                  <radio class="radio" value="1">收入</radio>
-                  <radio class="radio" value="0" style="margin-left:10px">支出</radio>
+                  <radio class="radio" checked="{{ type?'checked':'' }}" value="1">收入</radio>
+                  <radio class="radio" value="0" checked="{{ type?'':'checked' }}" style="margin-left:10px">支出</radio>
         </radio-group>
       </view>
   
